@@ -1,0 +1,102 @@
+.movies-carousel .title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.movies-carousel .title::before {
+  content: "";
+  display: block;
+  width: 0.3rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: var(--red-color);
+}
+
+.movies-carousel-slide {
+  display: flex;
+  padding: 2rem 0;
+  gap: 2rem;
+  overflow: auto;
+  scroll-behavior: smooth;
+}
+
+.movies-carousel-slide::-webkit-scrollbar {
+  display: none;
+}
+
+.movies-carousel-slide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.slide-wrapper {
+  position: relative;
+}
+
+.arrow-left,
+.arrow-right {
+  position: absolute;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 0.5rem;
+  border: solid 0.1rem var(--white-color);
+  width: 4rem;
+  height: 5rem;
+  z-index: 5;
+}
+
+.arrow-left.disable,
+.arrow-right.disable {
+  display: none;
+}
+
+.arrow-left {
+  left: -2rem;
+  top: 35%;
+}
+
+.arrow-right {
+  top: 35%;
+  right: -2rem;
+}
+
+.arrow-left svg,
+.arrow-right svg {
+  transition: var(--transition);
+}
+
+.arrow-left:hover svg,
+.arrow-right:hover svg {
+  fill: var(--red-color);
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.movie-card-poster {
+  max-height: 20rem;
+  max-width: 20rem;
+  border-radius: 0.25rem;
+}
+
+.movie-card a {
+  color: inherit;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  gap: 0.1rem;
+}
+
+.star-rating::before {
+  content: "";
+  background: url(../img/star-icon.svg) center no-repeat;
+  width: 1rem;
+  height: 1rem;
+}

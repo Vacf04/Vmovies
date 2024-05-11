@@ -1,0 +1,41 @@
+:root {
+  --white-color: #fff;
+  --black-color: #000;
+  --red-color: #a30808;
+  --transition: 0.3s;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  padding: 2rem 4rem;
+}
+
+body {
+  background-color: var(--black-color);
+  color: var(--white-color);
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 400px;
+  }
+}
