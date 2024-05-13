@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <meta name="description" content="VittorMovies database by:Víttor Franceschi">
+  <title>Filmes</title>
+  <link rel=" stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="header">
+      <a class="logo" href="/"><span class="title-span">vittor</span>movies</a>
+      <nav class="primary-nav">
+        <ul>
+          <li><a href="/">Inicio</a></li>
+          <li><a href="./movies.html">Filmes</a></li>
+          <li><a href="/">Em Cartaz</a></li>
+          <li><a href="/">Em Breve</a></li>
+          <li><a href="/" class="login-first-nav">Login</a></li>
+        </ul>
+      </nav>
+      <a href="/" class="login">Login</a>
+      <div class="menu-button">
+        <div class="line-button"></div>
+        <div class="line-button"></div>
+        <div class="line-button"></div>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="all-movies">
+      <div class="container">
+        <h1>Filmes</h1>
+        <div class="all-movies-content">
+
+        </div>
+        <div class="page-selector">
+          <button class="page-left" aria-label="botão para voltar a pagina"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#fff">
+              <polygon points="15.293 3.293 6.586 12 15.293 20.707 16.707 19.293 9.414 12 16.707 4.707 15.293 3.293" />
+            </svg></button>
+          <span class="actual-page">1</span>
+          <button class="page-right" aria-label="botão para avançar a pagina"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="#fff">
+              <polygon points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+            </svg></button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./js/movies/script.js"></script>
+</body>
+
+</html>

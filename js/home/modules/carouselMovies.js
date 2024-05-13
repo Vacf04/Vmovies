@@ -1,4 +1,4 @@
-import debounce from "./debounce.js";
+import debounce from "../../utilities/debounce.js";
 export default class CarouselMovies {
   constructor(carousel, arrowLeft, arrowRight) {
     this.carousel = document.querySelector(carousel);

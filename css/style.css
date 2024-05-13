@@ -2,5 +2,9 @@
 @import "./reset.css";
 @import "./header.css";
 @import "./general.css";
-@import "./moviesCarousel.css";
-@import "./mainMoviesCarousel.css";
+/* home page */
+@import "./home/moviesCarousel.css";
+@import "./home/mainMoviesCarousel.css";
+
+/* movies page */
+@import "./movies/movies.css";

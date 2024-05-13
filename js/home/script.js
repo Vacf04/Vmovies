@@ -1,8 +1,8 @@
 import CarouselMovies from "./modules/carouselMovies.js";
-import initMenuMobile from "./modules/menuMobile.js";
-import FetchAndDisplayMainMoviesCarousel from "./modules/fetchAndDisplayMainMoviesCarousel.js";
-import FetchAndDisplayMovies from "./modules/fetchAndDisplayMoviesCarousel.js";
-import AUTORIZATION from "./autorization.js";
+import initMenuMobile from "../utilities/menuMobile.js";
+import FetchAndDisplayMainMoviesCarousel from "./modules/fetchAndDisplayMainMovies.js";
+import FetchAndDisplayMoviesCarousel from "./modules/fetchAndDisplayMoviesCarousel.js";
+import AUTORIZATION from "../utilities/autorization.js";
 
 export const options = {
   method: "GET",
@@ -24,7 +24,7 @@ initMenuMobile();
 
 // fetch and display popular movies on carousel
 
-const fetchAndDisplayPopular = new FetchAndDisplayMovies(
+const fetchAndDisplayPopular = new FetchAndDisplayMoviesCarousel(
   "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1",
   ".popular-movies-slide"
 );
@@ -39,7 +39,7 @@ carouselPopular.init();
 
 // fetch and display top rated movies on carousel
 
-const fetchAndDisplayTopRated = new FetchAndDisplayMovies(
+const fetchAndDisplayTopRated = new FetchAndDisplayMoviesCarousel(
   "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1",
   ".top-rated-movies-slide"
 );
