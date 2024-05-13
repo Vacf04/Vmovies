@@ -1,6 +1,6 @@
 import { options } from "../script.js";
-import initCarouselMoviesBackground from "./carouselMoviesBackground.js";
-export default class FetchAndDisplayMoviesBackground {
+import initCarouselMainMovies from "./carouselMainMovies.js";
+export default class FetchAndDisplayMainMoviesCarousel {
   constructor(url, carousel) {
     this.fetchUrl = url;
     this.carousel = document.querySelector(carousel);
@@ -36,7 +36,7 @@ export default class FetchAndDisplayMoviesBackground {
             </div>
           </div>`;
       });
-      initCarouselMoviesBackground();
+      initCarouselMainMovies();
     } catch (error) {
       console.error("Erro ao exibir os filmes:", error);
     }

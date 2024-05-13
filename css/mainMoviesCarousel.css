@@ -23,11 +23,11 @@
   font-size: 4rem;
 }
 
-.slide-wrapper-now-playing-movies {
+.slide-wrapper-main-movies {
   overflow: hidden;
 }
 
-.now-playing-movies-carousel {
+.main-movies-carousel {
   display: flex;
   height: 80vh;
   --slide-index: 0;

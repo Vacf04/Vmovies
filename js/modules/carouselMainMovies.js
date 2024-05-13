@@ -1,6 +1,6 @@
-export default function initCarouselMoviesBackground() {
+export default function initCarouselMainMovies() {
   const controls = document.querySelectorAll(".control-button");
-  const slide = document.querySelector(".now-playing-movies-carousel");
+  const slide = document.querySelector(".main-movies-carousel");
   let changeEvent = new Event("changeEvent");
   let indexSlide = 0;
   let timer;
