@@ -1,7 +1,7 @@
 :root {
   --white-color: #fff;
   --black-color: #000;
-  --red-color: #a30808;
+  --red-color: #c40000;
   --transition: 0.3s;
 }
 
@@ -22,6 +22,21 @@ html {
   font-weight: bold;
 }
 
+body::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.1rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--black-color);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--red-color);
+  height: 0.1rem;
+  border-radius: 3rem;
+}
+
 @media (max-width: 1200px) {
   .container {
     max-width: 900px;
@@ -36,6 +51,10 @@ html {
 
 @media (max-width: 600px) {
   .container {
-    max-width: 400px;
+    max-width: 500px;
+  }
+
+  html {
+    font-size: 75%;
   }
 }

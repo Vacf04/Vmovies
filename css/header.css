@@ -89,6 +89,7 @@
     position: relative;
     display: block;
     z-index: 7;
+    padding: 1.5rem;
   }
 
   .menu-button.active .line-button:first-child {
