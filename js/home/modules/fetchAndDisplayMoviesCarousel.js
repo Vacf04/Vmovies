@@ -1,5 +1,5 @@
 import { options } from "../script.js";
-export default class FetchAndDisplayMovies {
+export default class FetchAndDisplayMoviesCarousel {
   constructor(url, carouselDiv) {
     this.fetchUrl = url;
     this.carouselDiv = document.querySelector(carouselDiv);

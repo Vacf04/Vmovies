@@ -2,21 +2,33 @@
   width: 100vw;
   height: 100%;
   flex: 0 0 100%;
+  position: relative;
+}
+
+.movie::before {
+  background-color: rgba(0, 0, 0, 0.5);
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
 }
 
 .movie-bg {
-  backdrop-filter: brightness(50%);
   width: 100%;
   height: 100%;
 }
 
 .movie-content {
   display: grid;
+
+  position: relative;
   align-content: center;
   max-width: 1200px;
   margin: 0 auto;
   height: 100%;
   padding: 0 4rem;
+  z-index: 6;
 }
 
 .movie-title {
