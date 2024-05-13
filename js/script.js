@@ -1,6 +1,6 @@
 import CarouselMovies from "./modules/carouselMovies.js";
 import initMenuMobile from "./modules/menuMobile.js";
-import FetchAndDisplayMoviesBackground from "./modules/fetchAndDisplayMoviesBackground.js";
+import FetchAndDisplayMainMoviesCarousel from "./modules/fetchAndDisplayMainMoviesCarousel.js";
 import FetchAndDisplayMovies from "./modules/fetchAndDisplayMoviesCarousel.js";
 import AUTORIZATION from "./autorization.js";
 
@@ -14,11 +14,11 @@ export const options = {
 
 // fetch and display now playing movies in the main carousel of the page
 
-const fetchAndDisplayMoviesBackground = new FetchAndDisplayMoviesBackground(
-  "https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1",
-  ".now-playing-movies-carousel"
+const fetchAndDisplayMainMoviesCarousel = new FetchAndDisplayMainMoviesCarousel(
+  "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1",
+  ".main-movies-carousel"
 );
-fetchAndDisplayMoviesBackground.displayMovies();
+fetchAndDisplayMainMoviesCarousel.displayMovies();
 
 initMenuMobile();
 
