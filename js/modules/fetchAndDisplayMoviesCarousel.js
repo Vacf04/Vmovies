@@ -28,7 +28,7 @@ export default class FetchAndDisplayMovies {
         <li class="movie-card">
           <img class="movie-card-poster" src="https://image.tmdb.org/t/p/w500/${
             item.poster_path
-          }">
+          }" alt="poster do filme ${item.title}">
           <a href="/" class="movie-card-title" title="${
             item.title
           }">${this.verifyLengthOfTitle(item.title)}</a>
