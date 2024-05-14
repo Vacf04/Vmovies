@@ -1,3 +1,7 @@
+body {
+  overflow-y: auto;
+}
+
 .all-movies-content {
   width: 100%;
   display: grid;
@@ -51,6 +55,24 @@
 .page-right {
   background: transparent;
   cursor: pointer;
+}
+
+.page-left.disable,
+.page-right.disable {
+  display: none;
+}
+
+.pages span,
+.last-page {
+  cursor: pointer;
+}
+
+.pages span.active {
+  background-color: var(--gray-color);
+}
+
+.pages span.disable {
+  display: none;
 }
 
 @media (max-width: 1200px) {

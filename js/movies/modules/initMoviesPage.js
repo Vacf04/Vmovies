@@ -3,6 +3,8 @@ export default function initMoviesPage() {
   const moviesDiv = document.querySelector(".all-movies-content");
   const leftPage = document.querySelector(".page-left");
   const rightPage = document.querySelector(".page-right");
+  const lastPageButton = document.querySelector(".last-page");
+  const pagesButtons = document.querySelectorAll(".pages span");
   let page = 1;
 
   async function fetchMovies() {
@@ -48,19 +50,13 @@ export default function initMoviesPage() {
   function nextPage() {
     if (page >= 500) return;
     page++;
-    clearDiv();
-    displayMovies(true);
-    updateNumberOfPages();
+    goToPage(page);
   }
 
   function prevPage() {
     if (page <= 1) return;
     page--;
-
-    clearDiv();
-
-    displayMovies(true);
-    updateNumberOfPages();
+    goToPage(page);
   }
 
   function clearDiv() {
@@ -71,10 +67,41 @@ export default function initMoviesPage() {
   }
 
   function updateNumberOfPages() {
-    const actualPage = document.querySelector(".actual-page");
-    actualPage.textContent = page;
+    if (page > 1) {
+      leftPage.classList.remove("disable");
+      pagesButtons[0].classList.remove("disable");
+    } else {
+      leftPage.classList.add("disable");
+    }
+    if (page >= 500) {
+      rightPage.classList.add("disable");
+      pagesButtons[2].classList.add("disable");
+    } else {
+      rightPage.classList.remove("disable");
+
+      pagesButtons[2].classList.remove("disable");
+    }
+    pagesButtons[0].textContent = page - 1;
+    pagesButtons[1].textContent = page;
+    pagesButtons[2].textContent = page + 1;
+    console.log(page);
   }
 
+  function goToPage(number) {
+    page = number;
+    clearDiv();
+    displayMovies();
+    updateNumberOfPages();
+  }
+
+  lastPageButton.addEventListener("click", () => {
+    goToPage(500);
+  });
+  pagesButtons.forEach((pageButton) => {
+    pageButton.addEventListener("click", () => {
+      goToPage(+pageButton.textContent);
+    });
+  });
   rightPage.addEventListener("click", nextPage);
   leftPage.addEventListener("click", prevPage);
   displayMovies();
