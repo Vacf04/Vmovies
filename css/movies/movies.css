@@ -21,11 +21,6 @@
   color: var(--white-color);
 }
 
-.categorie-button:hover {
-  background: var(--red-color);
-  color: var(--white-color);
-}
-
 .all-movies-content {
   width: 100%;
   display: grid;

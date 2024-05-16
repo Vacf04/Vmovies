@@ -8,3 +8,6 @@
 
 /* movies page */
 @import "./movies/movies.css";
+
+/* movie info page */
+@import "./movie_info/movie_info.css";
