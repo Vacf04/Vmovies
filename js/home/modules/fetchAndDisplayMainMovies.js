@@ -31,7 +31,7 @@ export default class FetchAndDisplayMainMoviesCarousel {
               <h1 class="movie-title">
               ${item.title}
               </h1>
-              <a class="movie-info button" href="/movie.html/${item.id}">Mais Informações</a>
+              <a class="movie-info button" href="/movie_info.html?movie=${item.id}">Mais Informações</a>
               </div>
             </div>
           </div>`;

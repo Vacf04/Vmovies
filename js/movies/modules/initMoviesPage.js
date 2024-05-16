@@ -56,9 +56,11 @@ export default function initMoviesPage() {
             <img class="movie-card-poster" src="https://image.tmdb.org/t/p/w500/${
               item.poster_path
             }" alt="poster do filme ${item.title}">
-            <a href="/" class="movie-card-title" title="${
-              item.title
-            }">${verifyLengthOfTitle(item.title)}</a>
+            <a href="/movie_info.html?movie=${
+              item.id
+            }" class="movie-card-title" title="${
+          item.title
+        }">${verifyLengthOfTitle(item.title)}</a>
             <div class="star-rating">
             <span>${item.vote_average.toFixed(1)}</span>
             </div>
