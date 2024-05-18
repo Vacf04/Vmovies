@@ -73,6 +73,7 @@
 .movie-card {
   display: flex;
   flex-direction: column;
+  color: var(--white-color);
   gap: 1rem;
   transition: var(--transition);
   cursor: pointer;

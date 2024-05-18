@@ -31,11 +31,26 @@
     </div>
   </header>
   <main>
-    <section class="movie-info">
+    <section class="movie-infos">
       <div class="movie-info-content container"></div>
 
     </section>
   </main>
+  <section class="movies-carousel">
+    <div class="container">
+      <h1 class="title">Filmes Recomendados</h1>
+      <div class="slide-wrapper">
+        <button class="arrow-left arrow-left-recommended disable" aria-label="botão para voltar o slide de filmes"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#fff">
+            <polygon points="15.293 3.293 6.586 12 15.293 20.707 16.707 19.293 9.414 12 16.707 4.707 15.293 3.293" />
+          </svg></button>
+        <ul class="movies-carousel-slide recommended-movies-slide"></ul>
+        <button class="arrow-right arrow-right-recommended" aria-label="botão para avançar o slide de filmes"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#fff">
+            <polygon points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
   <script type="module" src="./js/movie_info/script.js"></script>
 </body>
 

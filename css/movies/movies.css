@@ -55,6 +55,7 @@
 
 .all-movies-content .movie-card {
   display: flex;
+  text-decoration: none;
   flex-direction: column;
   gap: 1rem;
 }
