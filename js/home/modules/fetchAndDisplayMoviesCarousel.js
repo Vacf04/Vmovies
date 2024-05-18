@@ -25,18 +25,18 @@ export default class FetchAndDisplayMoviesCarousel {
       const popularMovies = await this.fetchMovies();
       popularMovies.forEach((item) => {
         this.carouselDiv.innerHTML += `
-        <li class="movie-card">
+        <li>
+        <a class="movie-card"  href="/movie_info.html?movie=${item.id}">
           <img class="movie-card-poster" src="https://image.tmdb.org/t/p/w500/${
             item.poster_path
           }" alt="poster do filme ${item.title}">
-          <a href="/movie_info.html?movie=${
-            item.id
-          }" class="movie-card-title" title="${
-          item.title
-        }">${this.verifyLengthOfTitle(item.title)}</a>
+          <p class="movie-card-title" title="${
+            item.title
+          }">${this.verifyLengthOfTitle(item.title)}</p>
           <div class="star-rating">
           <span>${item.vote_average.toFixed(1)}</span>
           </div>
+        </a>
         </li>`;
       });
     } catch (error) {

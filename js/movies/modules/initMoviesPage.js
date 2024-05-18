@@ -52,19 +52,17 @@ export default function initMoviesPage() {
       clearDiv();
       movies.forEach((item) => {
         moviesDiv.innerHTML += `
-          <div class="movie-card">
+          <a href="/movie_info.html?movie=${item.id}" class="movie-card">
             <img class="movie-card-poster" src="https://image.tmdb.org/t/p/w500/${
               item.poster_path
             }" alt="poster do filme ${item.title}">
-            <a href="/movie_info.html?movie=${
-              item.id
-            }" class="movie-card-title" title="${
-          item.title
-        }">${verifyLengthOfTitle(item.title)}</a>
+            <p class="movie-card-title" title="${
+              item.title
+            }">${verifyLengthOfTitle(item.title)}</p>
             <div class="star-rating">
             <span>${item.vote_average.toFixed(1)}</span>
             </div>
-          </div>`;
+          </a>`;
       });
       updatePageSelector();
     } catch (error) {
