@@ -77,9 +77,11 @@ export default function initMovieInfo() {
     );
     movieSection.innerHTML = `
     <div class="movie-info-image">
-    <img class="movie-info-poster" src="https://image.tmdb.org/t/p/w342/${
-      movieDataJson.poster_path
-    }" alt="poster do filme ${movieDataJson.title}">
+    <img class="movie-info-poster" src="${
+      movieDataJson.poster_path === null
+        ? "https://fakeimg.pl/342x500/ffffff/000000?text=Not+Found&font=bebas"
+        : `https://image.tmdb.org/t/p/w342/${movieDataJson.poster_path}`
+    }"alt="poster do filme ${movieDataJson.title}">
     </div>
     
     <h1 class="movie-info-title">${movieDataJson.title}</h1>
