@@ -86,6 +86,7 @@ export default class CarouselMovies {
   }
 
   init() {
+    if (!this.carousel) return;
     this.isTouchDevice();
     this.bindEvents();
     this.addArrowEvent();

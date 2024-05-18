@@ -27,8 +27,10 @@ export default class FetchAndDisplayMoviesCarousel {
         this.carouselDiv.innerHTML += `
         <li>
         <a class="movie-card"  href="/movie_info.html?movie=${item.id}">
-          <img class="movie-card-poster" src="https://image.tmdb.org/t/p/w500/${
-            item.poster_path
+          <img class="movie-card-poster" src="${
+            item.poster_path === null
+              ? "https://fakeimg.pl/215x320/ffffff/000000?text=Not+Found&font=bebas"
+              : `https://image.tmdb.org/t/p/w342/${item.poster_path}`
           }" alt="poster do filme ${item.title}">
           <p class="movie-card-title" title="${
             item.title
