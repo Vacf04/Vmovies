@@ -27,17 +27,15 @@ export default class FetchAndDisplayMoviesCarousel {
         this.carouselDiv.innerHTML += `
         <li>
         <a class="movie-card"  href="/movie_info.html?movie=${item.id}">
-          <img class="movie-card-poster" src="${
+          <img decoding="sync" loading="lazy" class="movie-card-poster" src="${
             item.poster_path === null
-              ? "https://fakeimg.pl/215x320/ffffff/000000?text=Not+Found&font=bebas"
-              : `https://image.tmdb.org/t/p/w342/${item.poster_path}`
+              ? "../../img/movie_placeholder.png"
+              : `https://image.tmdb.org/t/p/w220_and_h330_face/${item.poster_path}`
           }" alt="poster do filme ${item.title}">
-          <p class="movie-card-title" title="${
-            item.title
-          }">${this.verifyLengthOfTitle(item.title)}</p>
           <div class="star-rating">
-          <span>${item.vote_average.toFixed(1)}</span>
+            <span>${item.vote_average.toFixed(1)}</span>
           </div>
+            <p class="movie-card-title" title="${item.title}">${item.title}</p>
         </a>
         </li>`;
       });

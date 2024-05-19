@@ -1,23 +1,20 @@
 import { options } from "../script.js";
 import CarouselMovies from "../../home/modules/carouselMovies.js";
-export default async function initRecommendedMoviesCarousel(url) {
-  const carousel = document.querySelector(".recommended-movies-slide");
+export default async function initPeopleCarousel(url) {
+  const carousel = document.querySelector(".people-slide");
   const carouselFunction = new CarouselMovies(
-    ".recommended-movies-slide",
-    ".arrow-left-recommended",
-    ".arrow-right-recommended"
+    ".people-slide",
+    ".arrow-left-people",
+    ".arrow-right-people"
   );
 
-  const carouselSection = document.querySelector(
-    ".movies-recommended-carousel"
-  );
+  const carouselSection = document.querySelector(".people-carousel");
 
   async function fetchMovies() {
     try {
       const response = await fetch(url, options);
       const moviesJson = await response.json();
-      const moviesJsonResults = moviesJson.results;
-      return moviesJsonResults;
+      return moviesJson.cast;
     } catch (e) {
       console.log(e);
     }
@@ -31,25 +28,24 @@ export default async function initRecommendedMoviesCarousel(url) {
   async function display() {
     loading();
     const moviesJsonResults = await fetchMovies();
+    console.log(moviesJsonResults);
     if (moviesJsonResults.length < 1) {
       carouselSection.remove();
       return;
     }
     carouselSection.style.display = "block";
     document.documentElement.style.overflow = "auto";
-    moviesJsonResults.forEach((movie) => {
+    moviesJsonResults.forEach((people) => {
       carousel.innerHTML += `
       <li>
-      <a class="movie-card"  href="/movie_info.html?movie=${movie.id}">
+      <a class="movie-card">
         <img class="movie-card-poster" src="${
-          movie.poster_path === null
-            ? "../../img/movie_placeholder.png"
-            : `https://image.tmdb.org/t/p/w220_and_h330_face/${movie.poster_path}`
-        }" alt="poster do filme ${movie.title}">
-        <p class="movie-card-title" title="${movie.title}">${movie.title}</p>
-        <div class="star-rating">
-        <span>${movie.vote_average.toFixed(1)}</span>
-        </div>
+          people.profile_path === null
+            ? "../../img/user_placeholder.png"
+            : `https://image.tmdb.org/t/p/w220_and_h330_face/${people.profile_path}`
+        }" alt="foto do/a ${people.name}">
+        <p class="movie-card-title" >${people.character}</p>
+        <p>${people.name}</p>
       </a>
       </li>`;
     });

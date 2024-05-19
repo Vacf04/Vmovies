@@ -1,4 +1,5 @@
 import { options } from "../script.js";
+import initPeopleCarousel from "./initPeopleCarousel.js";
 import initRecommendedMoviesCarousel from "./initRecommendedMovies.js";
 export default function initMovieInfo() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -77,10 +78,10 @@ export default function initMovieInfo() {
     );
     movieSection.innerHTML = `
     <div class="movie-info-image">
-    <img class="movie-info-poster" src="${
+    <img decoding="sync" class="movie-info-poster" src="${
       movieDataJson.poster_path === null
-        ? "https://fakeimg.pl/342x500/ffffff/000000?text=Not+Found&font=bebas"
-        : `https://image.tmdb.org/t/p/w342/${movieDataJson.poster_path}`
+        ? "../../img/movie_placeholder_main.png"
+        : `https://image.tmdb.org/t/p/w300_and_h450_bestv2/${movieDataJson.poster_path}`
     }"alt="poster do filme ${movieDataJson.title}">
     </div>
     
@@ -110,9 +111,14 @@ export default function initMovieInfo() {
     
     `;
 
+    document.title = movieDataJson.title;
+
     hideWatchTrailerButton();
     initRecommendedMoviesCarousel(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=pt-BR&page=1`
+    );
+    initPeopleCarousel(
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=pt-BR`
     );
   }
 

@@ -1,7 +1,6 @@
 import initMovieInfo from "./modules/initMovieInfo.js";
 import initMenuMobile from "../utilities/menuMobile.js";
 import AUTORIZATION from "../utilities/autorization.js";
-import initRecommendedMoviesCarousel from "./modules/initRecommendedMovies.js";
 export const options = {
   method: "GET",
   headers: {
@@ -12,4 +11,3 @@ export const options = {
 
 initMenuMobile();
 initMovieInfo();
-initRecommendedMoviesCarousel();
