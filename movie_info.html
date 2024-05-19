@@ -5,8 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <meta name="description" content="VittorMovies database by:Víttor Franceschi">
-  <title>movie</title>
+  <title>Loading...</title>
   <link rel=" stylesheet" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -36,6 +39,21 @@
 
     </section>
   </main>
+  <section class="movies-carousel people-carousel">
+    <div class="container">
+      <h1 class="title">Elenco</h1>
+      <div class="slide-wrapper">
+        <button class="arrow-left arrow-left-people disable" aria-label="botão para voltar o slide de filmes"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#fff">
+            <polygon points="15.293 3.293 6.586 12 15.293 20.707 16.707 19.293 9.414 12 16.707 4.707 15.293 3.293" />
+          </svg></button>
+        <ul class="movies-carousel-slide people-slide"></ul>
+        <button class="arrow-right arrow-right-people" aria-label="botão para avançar o slide de filmes"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#fff">
+            <polygon points="7.293 4.707 14.586 12 7.293 19.293 8.707 20.707 17.414 12 8.707 3.293 7.293 4.707" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
   <section class="movies-carousel movies-recommended-carousel">
     <div class="container">
       <h1 class="title">Filmes Recomendados</h1>
