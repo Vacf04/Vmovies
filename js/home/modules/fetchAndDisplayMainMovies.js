@@ -1,20 +1,12 @@
-import { options } from "../script.js";
 import initCarouselMoviesBackground from "./carouselMainMovies.js";
-export default class FetchAndDisplayMainMoviesCarousel {
-  constructor(url, carousel) {
+import FetchAndDisplayMoviesCarousel from "../../utilities/FetchAndDisplayCarousel.js";
+
+export default class FetchAndDisplayMainMoviesCarousel extends FetchAndDisplayMoviesCarousel {
+  constructor(url, carousel, options) {
+    super();
     this.fetchUrl = url;
     this.carousel = document.querySelector(carousel);
-  }
-
-  async fetchMovies() {
-    try {
-      const response = await fetch(this.fetchUrl, options);
-      const data = await response.json();
-      const dataResults = data.results;
-      return dataResults;
-    } catch (error) {
-      console.error(error);
-    }
+    this.options = options;
   }
 
   async displayMovies() {

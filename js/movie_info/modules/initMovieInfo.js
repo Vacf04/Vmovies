@@ -1,5 +1,5 @@
 import { options } from "../script.js";
-import initPeopleCarousel from "./initPeopleCarousel.js";
+import FetchAndDisplayPeopleCarousel from "./FetchAndDisplayPeopleCarousel.js";
 import initRecommendedMoviesCarousel from "./initRecommendedMovies.js";
 export default function initMovieInfo() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -48,8 +48,9 @@ export default function initMovieInfo() {
   }
 
   function convertToHours(runtime) {
-    const hours = Math.floor(runtime / 60);
-    const minutes = runtime % 60;
+    let hours = Math.floor(runtime / 60);
+    let minutes = runtime % 60;
+    if (minutes < 10) minutes = "0" + minutes;
     return `${hours}h ${minutes}m`;
   }
 
@@ -71,6 +72,7 @@ export default function initMovieInfo() {
     document.documentElement.style.overflow = "auto";
     movieSectionBg.style.display = "block";
     const movieDataJson = await fetchMovie();
+    console.log(movieDataJson);
 
     movieSectionBg.style.setProperty(
       "--background-url",
@@ -117,9 +119,14 @@ export default function initMovieInfo() {
     initRecommendedMoviesCarousel(
       `https://api.themoviedb.org/3/movie/${movieId}/recommendations?language=pt-BR&page=1`
     );
-    initPeopleCarousel(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=pt-BR`
+    const fetchAndDisplayPeople = new FetchAndDisplayPeopleCarousel(
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=pt-BR`,
+      ".people-slide",
+      options,
+      ".people-carousel"
     );
+
+    fetchAndDisplayPeople.displayMovies();
   }
 
   displayMovieInfo();

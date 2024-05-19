@@ -1,13 +1,13 @@
-import { options } from "../script.js";
 export default class FetchAndDisplayMoviesCarousel {
-  constructor(url, carouselDiv) {
+  constructor(url, carouselDiv, options) {
     this.fetchUrl = url;
     this.carouselDiv = document.querySelector(carouselDiv);
+    this.options = options;
   }
 
   async fetchMovies() {
     try {
-      const response = await fetch(this.fetchUrl, options);
+      const response = await fetch(this.fetchUrl, this.options);
       const data = await response.json();
       const dataResults = data.results;
       return dataResults;
@@ -16,13 +16,15 @@ export default class FetchAndDisplayMoviesCarousel {
     }
   }
 
-  verifyLengthOfTitle(title) {
-    return title.length >= 20 ? `${title.slice(0, 20).trim()}...` : title;
-  }
-
   async displayMovies() {
     try {
       const popularMovies = await this.fetchMovies();
+      if (popularMovies.length < 1) {
+        const sectionCarousel =
+          this.carouselDiv.parentElement.parentElement.parentElement;
+        sectionCarousel.remove();
+        return;
+      }
       popularMovies.forEach((item) => {
         this.carouselDiv.innerHTML += `
         <li>
