@@ -15,7 +15,8 @@
 
 .primary-nav ul {
   display: flex;
-  gap: 5rem;
+  align-items: center;
+  gap: 1rem;
   animation: show-left 0.3s;
 }
 
@@ -67,6 +68,41 @@
 
 .login-first-nav:hover {
   border-color: var(--gray-color);
+}
+
+.search-movies {
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 20rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  background-color: var(--red-color);
+  color: var(--white-color);
+  position: relative;
+}
+
+.search-movies::placeholder {
+  color: var(--white-color);
+}
+
+.search-movies:focus {
+  outline: none;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-button {
+  cursor: pointer;
+  background-color: var(--white-color);
+  border: transparent;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 0.5rem 1rem;
 }
 
 @keyframes show-left {

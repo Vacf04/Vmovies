@@ -1,7 +1,7 @@
-import CarouselMovies from "./modules/carouselMovies.js";
+import CarouselMovies from "../utilities/CarouselMovies.js";
 import initMenuMobile from "../utilities/menuMobile.js";
-import FetchAndDisplayMainMoviesCarousel from "./modules/fetchAndDisplayMainMovies.js";
-import FetchAndDisplayMoviesCarousel from "./modules/fetchAndDisplayMoviesCarousel.js";
+import FetchAndDisplayMainMoviesCarousel from "./modules/FetchAndDisplayMainMovies.js";
+import FetchAndDisplayMoviesCarousel from "../utilities/FetchAndDisplayCarousel.js";
 import AUTORIZATION from "../utilities/autorization.js";
 
 export const options = {
@@ -16,7 +16,8 @@ export const options = {
 
 const fetchAndDisplayMainMoviesCarousel = new FetchAndDisplayMainMoviesCarousel(
   "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1",
-  ".main-movies-carousel"
+  ".main-movies-carousel",
+  options
 );
 fetchAndDisplayMainMoviesCarousel.displayMovies();
 
@@ -26,7 +27,8 @@ initMenuMobile();
 
 const fetchAndDisplayPopular = new FetchAndDisplayMoviesCarousel(
   "https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1",
-  ".popular-movies-slide"
+  ".popular-movies-slide",
+  options
 );
 
 fetchAndDisplayPopular.displayMovies();
@@ -41,7 +43,8 @@ carouselPopular.init();
 
 const fetchAndDisplayTopRated = new FetchAndDisplayMoviesCarousel(
   "https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1",
-  ".top-rated-movies-slide"
+  ".top-rated-movies-slide",
+  options
 );
 
 fetchAndDisplayTopRated.displayMovies();

@@ -1,4 +1,4 @@
-import debounce from "../../utilities/debounce.js";
+import debounce from "./debounce.js";
 export default class CarouselMovies {
   constructor(carousel, arrowLeft, arrowRight) {
     this.carousel = document.querySelector(carousel);
@@ -31,7 +31,6 @@ export default class CarouselMovies {
       const element = elements[i];
       const elementRect = element.getBoundingClientRect();
       const containerRect = this.carousel.getBoundingClientRect();
-      console.log(this.carousel.parentElement.children);
       let isRightVisible = elementRect.right <= containerRect.right;
       if (!isRightVisible) {
         element.scrollIntoView({
