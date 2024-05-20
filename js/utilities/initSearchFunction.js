@@ -77,6 +77,7 @@ export default function initSearchFunction(options) {
 
   function showInput() {
     searchContainerMobile.classList.add("active");
+    searchInputMobile.focus();
   }
 
   searchInput.addEventListener("input", () => {
