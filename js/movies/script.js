@@ -1,6 +1,7 @@
 import initMoviesPage from "./modules/initMoviesPage.js";
 import initMenuMobile from "../utilities/menuMobile.js";
 import AUTORIZATION from "../utilities/autorization.js";
+import initSearchFunction from "../utilities/initSearchFunction.js";
 
 export const options = {
   method: "GET",
@@ -12,3 +13,4 @@ export const options = {
 
 initMenuMobile();
 initMoviesPage();
+initSearchFunction(options);

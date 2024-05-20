@@ -3,6 +3,7 @@ import initMenuMobile from "../utilities/menuMobile.js";
 import FetchAndDisplayMainMoviesCarousel from "./modules/FetchAndDisplayMainMovies.js";
 import FetchAndDisplayMoviesCarousel from "../utilities/FetchAndDisplayCarousel.js";
 import AUTORIZATION from "../utilities/autorization.js";
+import initSearchFunction from "../utilities/initSearchFunction.js";
 
 export const options = {
   method: "GET",
@@ -22,6 +23,7 @@ const fetchAndDisplayMainMoviesCarousel = new FetchAndDisplayMainMoviesCarousel(
 fetchAndDisplayMainMoviesCarousel.displayMovies();
 
 initMenuMobile();
+initSearchFunction(options);
 
 // fetch and display popular movies on carousel
 
