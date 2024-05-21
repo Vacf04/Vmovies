@@ -20,7 +20,7 @@ export default class FetchAndDisplayPeopleCarousel extends FetchAndDisplayMovies
       const data = await response.json();
       return data.cast;
     } catch (error) {
-      console.error(error);
+      return;
     }
   }
 
@@ -57,7 +57,7 @@ export default class FetchAndDisplayPeopleCarousel extends FetchAndDisplayMovies
 
       carouselFunction.init();
     } catch (error) {
-      console.error(error);
+      return;
     }
   }
 }

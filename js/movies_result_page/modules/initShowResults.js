@@ -18,17 +18,14 @@ export default function initShowResults() {
       let fetchUrl = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=pt-BR&page=${page}`;
       const response = await fetch(fetchUrl, options);
       const data = await response.json();
-
-      console.log(data);
       return data;
     } catch (error) {
-      console.error(error);
+      return;
     }
   }
 
   async function displayMovies() {
     try {
-      console.log("oxi");
       loading();
       const moviesData = await fetchMovies();
       pageTitle.innerText = `Pesquisar "${query}"`;

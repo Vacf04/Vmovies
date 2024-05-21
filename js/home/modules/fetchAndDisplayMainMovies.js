@@ -30,7 +30,7 @@ export default class FetchAndDisplayMainMoviesCarousel extends FetchAndDisplayMo
       });
       initCarouselMoviesBackground();
     } catch (error) {
-      console.error("Erro ao exibir os filmes:", error);
+      return;
     }
   }
 }
