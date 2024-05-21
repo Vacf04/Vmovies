@@ -32,6 +32,7 @@ export default class FetchAndDisplayPeopleCarousel extends FetchAndDisplayMovies
         this.carouselSection.remove();
         return;
       }
+
       this.carouselSection.style.display = "block";
       document.documentElement.style.overflow = "auto";
       castJsonResults.forEach((people) => {
