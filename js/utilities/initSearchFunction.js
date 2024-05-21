@@ -2,12 +2,17 @@ export default function initSearchFunction(options) {
   const searchInput = document.querySelector(".search-movies");
   const searchInputMobile = document.querySelector(".search-movies-mobile");
   const form = document.querySelector(".form-search");
+  const formMobile = document.querySelector(".form-search-mobile");
   const someResults = document.querySelector(".some-results");
   const someResultsMobile = document.querySelector(".some-results-mobile");
   const searchButtonMobile = document.querySelector(".search-button-mobile");
   const searchContainerMobile = document.querySelector(
     ".search-container-mobile"
   );
+  const seeAllResultsButton = document.createElement("li");
+  seeAllResultsButton.classList.add("result-container");
+  const seeAllResultsButtonMobile = document.createElement("li");
+  seeAllResultsButtonMobile.classList.add("result-container");
   async function fetchMovie(query) {
     try {
       const response = await fetch(
@@ -21,7 +26,8 @@ export default function initSearchFunction(options) {
     }
   }
 
-  async function searchMovie(mobile = false) {
+  async function searchMovie(e, mobile) {
+    e.preventDefault();
     if (mobile) {
       const someResults = someResultsMobile;
       const searchInput = searchInputMobile;
@@ -30,30 +36,25 @@ export default function initSearchFunction(options) {
       someResults.innerHTML = "<p class='loading-search'>Loading...</p>";
       let query = searchInput.value;
       const moviesDataJson = await fetchMovie(query);
-      if (moviesDataJson.length < 1) {
-        someResults.innerHTML =
-          "<p class='no-results-search'>Sem resultados</p>";
-        return;
-      }
       someResults.innerHTML = "";
       moviesDataJson.slice(0, 10).forEach((movie) => {
-        someResults.innerHTML += `<a href="/movie_info.html?movie=${movie.id}" style="display: block;">${movie.title}</a>`;
+        someResults.innerHTML += `<li class='result-container'><a href="/movie_info.html?movie=${movie.id}" style="display: block;">${movie.title}</a></li>`;
       });
+
+      seeAllResultsButtonMobile.innerHTML = `<a style="display: block;">Veja todos os resultados para '${query}'</a>`;
+      someResults.appendChild(seeAllResultsButtonMobile);
     } else {
       someResults.classList.add("active");
       searchInput.classList.add("active");
       someResults.innerHTML = "<p class='loading-search'>Loading...</p>";
       let query = searchInput.value;
       const moviesDataJson = await fetchMovie(query);
-      if (moviesDataJson.length < 1) {
-        someResults.innerHTML =
-          "<p class='no-results-search'>Sem resultados</p>";
-        return;
-      }
       someResults.innerHTML = "";
       moviesDataJson.slice(0, 10).forEach((movie) => {
-        someResults.innerHTML += `<a href="/movie_info.html?movie=${movie.id}" style="display: block;">${movie.title}</a>`;
+        someResults.innerHTML += `<li class='result-container'><a href="/movie_info.html?movie=${movie.id}" style="display: block;">${movie.title}</a></li>`;
       });
+      seeAllResultsButton.innerHTML = `<a style="display: block; cursor: pointer;">Veja todos os resultados para '${query}'</a>`;
+      someResults.appendChild(seeAllResultsButton);
     }
   }
 
@@ -80,12 +81,35 @@ export default function initSearchFunction(options) {
     searchInputMobile.focus();
   }
 
-  searchInput.addEventListener("input", () => {
-    searchMovie(false);
+  function showResultsPage(e, mobile) {
+    e.preventDefault();
+    if (mobile) {
+      let query = searchInputMobile.value;
+      window.location = `/movies_result_page.html?query=${query}`;
+    } else {
+      let query = searchInput.value;
+      window.location = `/movies_result_page.html?query=${query}`;
+    }
+  }
+
+  searchInput.addEventListener("input", (e) => {
+    searchMovie(e, false);
+  });
+  form.addEventListener("submit", (e) => {
+    showResultsPage(e, false);
+  });
+  seeAllResultsButton.addEventListener("click", (e) => {
+    showResultsPage(e, false);
   });
   searchButtonMobile.addEventListener("click", showInput);
-  searchInputMobile.addEventListener("input", () => {
-    searchMovie(true);
+  searchInputMobile.addEventListener("input", (e) => {
+    searchMovie(e, true);
+  });
+  formMobile.addEventListener("submit", (e) => {
+    showResultsPage(e, true);
+  });
+  seeAllResultsButtonMobile.addEventListener("click", (e) => {
+    showResultsPage(e, true);
   });
   window.addEventListener("click", displayNoneToSomeResults);
 }
