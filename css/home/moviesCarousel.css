@@ -101,9 +101,8 @@
 
 .star-rating {
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: start;
-
   gap: 0.1rem;
 }
 
@@ -112,4 +111,23 @@
   background: url(../../img/star-icon.svg) center no-repeat;
   width: 1rem;
   height: 1rem;
+}
+
+@media (max-width: 600px) {
+  .star-rating::before {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .star-rating::before {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .star-rating {
+    align-items: end;
+    gap: 0.2rem;
+  }
 }
