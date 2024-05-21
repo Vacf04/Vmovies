@@ -8,6 +8,11 @@ export default function initMovieInfo() {
   const movieSectionBg = document.querySelector(".movie-infos");
   const movieSection = document.querySelector(".movie-info-content");
 
+  if (!movieId) {
+    movieSection.innerHTML = "Nenhum filme encontrado.";
+    return;
+  }
+
   async function fetchMovie() {
     try {
       const response = await fetch(
@@ -72,7 +77,6 @@ export default function initMovieInfo() {
     document.documentElement.style.overflow = "auto";
     movieSectionBg.style.display = "block";
     const movieDataJson = await fetchMovie();
-    console.log(movieDataJson);
 
     movieSectionBg.style.setProperty(
       "--background-url",

@@ -12,7 +12,7 @@ export default class FetchAndDisplayMoviesCarousel {
       const dataResults = data.results;
       return dataResults;
     } catch (error) {
-      console.error(error);
+      return;
     }
   }
 
@@ -42,7 +42,7 @@ export default class FetchAndDisplayMoviesCarousel {
         </li>`;
       });
     } catch (error) {
-      console.error("Erro ao exibir os filmes: ", error);
+      return;
     }
   }
 }
