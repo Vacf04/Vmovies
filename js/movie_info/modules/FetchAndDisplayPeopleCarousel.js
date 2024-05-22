@@ -30,6 +30,8 @@ export default class FetchAndDisplayPeopleCarousel extends FetchAndDisplayMovies
       const castJsonResults = await this.fetchMovies();
       if (castJsonResults.length < 1) {
         this.carouselSection.remove();
+        const mainSection = document.querySelector(".movie-infos");
+        mainSection.style.minHeight = "80vh";
         return;
       }
 

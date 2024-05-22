@@ -14,7 +14,6 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-
   padding: 2rem;
 }
 
@@ -38,17 +37,9 @@
   color: var(--gray-color);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   .footer-container {
-    display: flex;
-    gap: 2rem;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-
-    padding: 2rem;
   }
 }

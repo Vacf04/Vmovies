@@ -1,3 +1,7 @@
+.all-movies {
+  min-height: 80vh;
+}
+
 .categories-filter {
   display: flex;
   justify-content: center;
@@ -62,8 +66,8 @@
 }
 
 .page-selector {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
   display: flex;
   gap: 0.5rem;
   justify-content: center;
@@ -189,6 +193,9 @@
 }
 
 @media (max-width: 600px) {
+  .all-movies {
+    min-height: 85vh;
+  }
   .all-movies-content {
     grid-template-columns: repeat(2, 1fr);
   }
