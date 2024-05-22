@@ -38,14 +38,10 @@ export default function initMovieInfo() {
       if (movieVideosJsonResults.length < 1) {
         return "";
       }
-      let trailerCode;
-      for (let i = 0; i <= movieVideosJsonResults.length; i++) {
-        if (movieVideosJsonResults[i].type === "Trailer") {
-          trailerCode = movieVideosJsonResults[i].key;
-          break;
-        }
-      }
-      const trailerLink = `https://www.youtube.com/watch?v=${trailerCode}`;
+      const trailer = movieVideosJsonResults.find(
+        (video) => video.type === "Trailer"
+      );
+      const trailerLink = `https://www.youtube.com/watch?v=${trailer.key}`;
       return trailerLink;
     } catch (e) {
       return "";

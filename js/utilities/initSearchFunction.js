@@ -1,3 +1,4 @@
+import debounce from "../utilities/debounce.js";
 export default function initSearchFunction(options) {
   const searchInput = document.querySelector(".search-movies");
   const searchInputMobile = document.querySelector(".search-movies-mobile");
@@ -9,10 +10,15 @@ export default function initSearchFunction(options) {
   const searchContainerMobile = document.querySelector(
     ".search-container-mobile"
   );
-  const seeAllResultsButton = document.createElement("li");
-  seeAllResultsButton.classList.add("result-container");
-  const seeAllResultsButtonMobile = document.createElement("li");
-  seeAllResultsButtonMobile.classList.add("result-container");
+  const seeAllResultsButton = createSeeAllResultsButton();
+  const seeAllResultsButtonMobile = createSeeAllResultsButton();
+
+  function createSeeAllResultsButton() {
+    const button = document.createElement("li");
+    button.classList.add("result-container");
+    return button;
+  }
+
   async function fetchMovie(query) {
     try {
       const response = await fetch(
@@ -22,40 +28,26 @@ export default function initSearchFunction(options) {
       const movieDataJson = await response.json();
       return movieDataJson.results;
     } catch (e) {
-      return;
+      return [];
     }
   }
 
   async function searchMovie(e, mobile) {
     e.preventDefault();
-    if (mobile) {
-      const someResults = someResultsMobile;
-      const searchInput = searchInputMobile;
-      someResults.classList.add("active");
-      searchInput.classList.add("active");
-      someResults.innerHTML = "<p class='loading-search'>Loading...</p>";
-      let query = searchInput.value;
-      const moviesDataJson = await fetchMovie(query);
-      someResults.innerHTML = "";
-      moviesDataJson.slice(0, 10).forEach((movie) => {
-        someResults.innerHTML += `<li class='result-container'><a href="/movie_info.html?movie=${movie.id}" style="display: block;">${movie.title}</a></li>`;
-      });
-
-      seeAllResultsButtonMobile.innerHTML = `<a style="display: block;">Veja todos os resultados para '${query}'</a>`;
-      someResults.appendChild(seeAllResultsButtonMobile);
-    } else {
-      someResults.classList.add("active");
-      searchInput.classList.add("active");
-      someResults.innerHTML = "<p class='loading-search'>Loading...</p>";
-      let query = searchInput.value;
-      const moviesDataJson = await fetchMovie(query);
-      someResults.innerHTML = "";
-      moviesDataJson.slice(0, 10).forEach((movie) => {
-        someResults.innerHTML += `<li class='result-container'><a href="/movie_info.html?movie=${movie.id}" style="display: block;">${movie.title}</a></li>`;
-      });
-      seeAllResultsButton.innerHTML = `<a style="display: block; cursor: pointer;">Veja todos os resultados para '${query}'</a>`;
-      someResults.appendChild(seeAllResultsButton);
-    }
+    const [input, results, buttonAllResults] = mobile
+      ? [searchInputMobile, someResultsMobile, seeAllResultsButtonMobile]
+      : [searchInput, someResults, seeAllResultsButton];
+    results.classList.add("active");
+    input.classList.add("active");
+    results.innerHTML = "<p class='loading-search'>Loading...</p>";
+    let query = input.value;
+    const moviesDataJson = await fetchMovie(query);
+    results.innerHTML = "";
+    moviesDataJson.slice(0, 10).forEach((movie) => {
+      results.innerHTML += `<li class='result-container'><a href="/movie_info.html?movie=${movie.id}" style="display: block;">${movie.title}</a></li>`;
+    });
+    buttonAllResults.innerHTML = `<a style="display: block; cursor: pointer;">Veja todos os resultados para '${query}'</a>`;
+    results.appendChild(buttonAllResults);
   }
 
   function displayNoneToSomeResults(e) {
@@ -83,18 +75,16 @@ export default function initSearchFunction(options) {
 
   function showResultsPage(e, mobile) {
     e.preventDefault();
-    if (mobile) {
-      let query = searchInputMobile.value;
-      window.location = `/movies_result_page.html?query=${query}`;
-    } else {
-      let query = searchInput.value;
-      window.location = `/movies_result_page.html?query=${query}`;
-    }
+    const query = mobile ? searchInputMobile.value : searchInput.value;
+    window.location = `/movies_result_page.html?query=${query}`;
   }
 
-  searchInput.addEventListener("input", (e) => {
-    searchMovie(e, false);
-  });
+  searchInput.addEventListener(
+    "input",
+    debounce((e) => {
+      searchMovie(e, false);
+    }, 300)
+  );
   form.addEventListener("submit", (e) => {
     showResultsPage(e, false);
   });
@@ -102,9 +92,12 @@ export default function initSearchFunction(options) {
     showResultsPage(e, false);
   });
   searchButtonMobile.addEventListener("click", showInput);
-  searchInputMobile.addEventListener("input", (e) => {
-    searchMovie(e, true);
-  });
+  searchInputMobile.addEventListener(
+    "input",
+    debounce((e) => {
+      searchMovie(e, true);
+    }, 300)
+  );
   formMobile.addEventListener("submit", (e) => {
     showResultsPage(e, true);
   });
